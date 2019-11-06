@@ -1,37 +1,39 @@
 const fs = require('fs');
 const path = require('path');
+var rewire = require("rewire");
 
-jest.dontMock('fs');
-//here we are going to store and accumulate (concatenate) all the console log's from the exercise
-let _buffer = "";
-let _log = console.log;
+//I have to use rewire because the variables "clients" and "listClientsIds" are not exported
+const app = rewire("./app.js");
 
-// lets override the console.log function to mock it,
-// but we are also going to save what supposed to be the ouput of the console inside _buffer
-global.console.log = console.log = jest.fn((text) => _buffer += text + "\n");
+//import the list of clients from app.js
+const clients = app.__get__('clients');
 
-describe('All the javascript should match', function () {
-    beforeEach(() => {
-        //here I import the HTML into the document
-    });
-    afterEach(() => { jest.resetModules(); });
+//import the function listClientsIds from the app.js
+const listClientsIds = app.__get__('listClientsIds');
 
-    it('console.log() function should be called with Hello World', function () {
+it('The function listClientsIds should exists', function () {
+    expect(listClientsIds).toBeTruthy();
+});
 
-        /*
-            Here is how to mock the alert function:
-            https://stackoverflow.com/questions/41885841/how-to-mock-the-javascript-window-object-using-jest
-        */
+it('The function listClientsIds should return an array', function () {
+    //execute the listClientsIds function from app.js
+    const result = listClientsIds();
+    expect(Array.isArray(result)).toBeTruthy();
+});
 
-        //then I import the index.js (which should have the alert() call inside)
-        const file = require("./app.js");
+it('The function listClientsIds should return an array of 6 elements', function () {
+    //execute the listClientsIds function from app.js
+    const result = listClientsIds();
+    //Expect the console log to have been called with "Hello World" at least one
+    expect(result.length).toBe(6);
+});
 
-        //Expect the console log to have been called with "Hello World" at least one
-        expect(console.log).toHaveBeenCalledWith("Hello World");
-        //and I expect the console.log to be already called just one time.
-        expect(console.log.mock.calls.length).toBe(1);
+it('The function listClientsIds should return an array with the clients ids', function () {
+    //execute the listClientsIds function from app.js
+    const result = listClientsIds();
 
-        //You can also compare the entire console buffer (if there have been several console.log calls on the exercise)
-        //expect(_buffer).toBe("Compare with the entire function buffer out");
-    });
+    // solution of the exercise (expected array values)
+    const solution = clients.map(c => c.id);
+    //create my own solution array and compare it with the result
+    expect(result).toEqual(solution);
 });
