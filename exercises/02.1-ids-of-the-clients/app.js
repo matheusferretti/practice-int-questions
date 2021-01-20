@@ -9,4 +9,5 @@ const clients = [
 
 const listClientsIds = () => {
   // your code here
+  return clients.map((clients) => clients.id)
 };
