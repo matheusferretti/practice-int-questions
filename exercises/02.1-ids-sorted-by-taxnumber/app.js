@@ -9,4 +9,5 @@ const clients = [
 
 function listClientsIdsSortByTaxNumber() {
     // array with the ids of the clients sorted by taxNumber
+    return clients.map((clients) => (clients.taxNumber))
 };
