@@ -44,3 +44,4 @@ it('The function listClientsIdsSortByTaxNumber should return an array with the c
     //create my own solution array and compare it with the result
     expect(result).toEqual(solution);
 });
+

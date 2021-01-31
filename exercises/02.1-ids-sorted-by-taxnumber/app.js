@@ -11,13 +11,15 @@ function listClientsIdsSortByTaxNumber() {
     // array with the ids of the clients sorted by taxNumber
     clients.sort(function(a , b) {
         if(a.taxNumber > b.taxNumber){
-            return 1
+            return 1;
         }
         if(a.taxNumber < b.taxNumber){
-            return -1
+            return -1;
         }
 
-        return 0
+        return 0;
     });
-    return clients.map((client) => (client.id))
+    return clients.map((client) => client.id)
 };
+
+console.log(listClientsIdsSortByTaxNumber())
