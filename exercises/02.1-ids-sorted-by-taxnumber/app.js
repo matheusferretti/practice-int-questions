@@ -9,5 +9,15 @@ const clients = [
 
 function listClientsIdsSortByTaxNumber() {
     // array with the ids of the clients sorted by taxNumber
-    return clients.map((clients) => (clients.taxNumber))
+    clients.sort(function(a , b) {
+        if(a.taxNumber > b.taxNumber){
+            return 1
+        }
+        if(a.taxNumber < b.taxNumber){
+            return -1
+        }
+
+        return 0
+    });
+    return clients.map((client) => (client.id))
 };
