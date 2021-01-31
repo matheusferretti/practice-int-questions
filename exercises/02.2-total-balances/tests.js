@@ -19,7 +19,7 @@ it('The function sortClientsTotalBalances should return an array', function () {
     expect(Array.isArray(result)).toBeTruthy();
 });
 
-it('The function sortClientsTotalBalances should return an array of 6 elements', function () {
+it('The function sortClientsTotalBalances should return an array of 23 elements', function () {
     //execute the sortClientsTotalBalances function from app.js
     const result = sortClientsTotalBalances();
     //Expect the console log to have been called with "Hello World" at least one
