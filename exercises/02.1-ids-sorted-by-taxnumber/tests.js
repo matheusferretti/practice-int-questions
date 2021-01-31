@@ -8,7 +8,7 @@ const clients = app.__get__('clients');
 
 const listClientsIdsSortByTaxNumber = app.__get__('listClientsIdsSortByTaxNumber');
 
-it('The function listClientsIdsSortByTaxNumber should exists', function () {
+it('The function listClientsIdsSortByTaxNumber should exist', function () {
     expect(listClientsIdsSortByTaxNumber).toBeTruthy();
 });
 
@@ -25,7 +25,7 @@ it('The function listClientsIdsSortByTaxNumber should return an array of 6 eleme
     expect(result.length).toBe(6);
 });
 
-it('The function listClientsIdsSortByTaxNumber should return an array with the clients ids', function () {
+it('The function listClientsIdsSortByTaxNumber should return an array with the clients taxNumbers', function () {
     //execute the listClientsIdsSortByTaxNumber function from app.js
     const result = listClientsIdsSortByTaxNumber();
 
