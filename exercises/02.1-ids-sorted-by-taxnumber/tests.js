@@ -30,7 +30,7 @@ it('The function listClientsIdsSortByTaxNumber should return an array with the c
     const result = listClientsIdsSortByTaxNumber();
 
     // solution of the exercise (expected array values)
-    const solution = clients.sort(function (a, b) {
+    let solution = clients.sort(function (a, b) {
         if (a.taxNumber > b.taxNumber) {
           return 1;
         }
@@ -40,7 +40,7 @@ it('The function listClientsIdsSortByTaxNumber should return an array with the c
 
         return 0;
     });
-    return clients.map((client) => client.id);
+    solution =  solution.map((client) => client.id);
     //create my own solution array and compare it with the result
     expect(result).toEqual(solution);
 });
